@@ -1,0 +1,55 @@
+{
+	"double-slit": [
+		{
+			"fileName": "double-slit-data-1",
+			"average": 10,
+			"d": "150cm",
+			"r": "0.15mm",
+			"status": false
+		},
+		{
+			"fileName": "double-slit-data-2",
+			"average": 50,
+			"d": "150cm",
+			"r": "0.15mm",
+			"status": false
+		},
+		{
+			"fileName": "double-slit-data-3",
+			"average": 10,
+			"d": "150cm",
+			"r": "0.15mm",
+			"status": false
+		},
+		{
+			"fileName": "double-slit-data-4",
+			"average": 10,
+			"d": "150cm",
+			"r": "0.15mm",
+			"status": true
+		},
+		{
+			"fileName": "double-slit-data-5",
+			"average": 50,
+			"d": "150cm",
+			"r": "0.15mm",
+			"status": true
+		}
+	],
+	"single-slit": [
+		{
+			"fileName": "single-slit-data-1",
+			"average": 10,
+			"d": "150cm",
+			"r": "0.15mm",
+			"status": true
+		},
+		{
+			"fileName": "single-slit-data-2",
+			"average": 50,
+			"d": "150cm",
+			"r": "0.15mm",
+			"status": true
+		}
+	]
+}
