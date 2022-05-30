@@ -34,6 +34,34 @@
 			"d": "150cm",
 			"r": "0.15mm",
 			"status": true
+		},
+		{
+			"fileName": "double-slit-data-c-1",
+			"average": 50,
+			"d": "4.25m",
+			"r": "0.25mm",
+			"status": true
+		},
+		{
+			"fileName": "double-slit-data-c-2",
+			"average": 50,
+			"d": "4.25m",
+			"r": "0.5mm",
+			"status": true
+		},
+		{
+			"fileName": "double-slit-data-c-3",
+			"average": 50,
+			"d": "4.25m",
+			"r": "0.75mm",
+			"status": true
+		},
+		{
+			"fileName": "double-slit-data-c-4",
+			"average": 50,
+			"d": "4.25m",
+			"r": "1mm",
+			"status": true
 		}
 	],
 	"single-slit": [

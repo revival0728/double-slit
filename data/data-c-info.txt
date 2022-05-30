@@ -1,0 +1,12 @@
+# double-slit-data-c-1
+r = 0.25mm
+d = 4.25m
+# double-slit-data-c-2
+r = 0.5mm
+d = 4.25m
+# double-slit-data-c-3
+r = 0.75mm
+d = 4.25m
+# double-slit-data-c-4
+r = 1mm
+d = 4.25m

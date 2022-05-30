@@ -1,53 +1,28 @@
-import matplotlib.pyplot as plt
-import numpy as np
+#!python3.9
 
-def procDeltaY(data):
-    ret = []
-    for i in data:
-        ret.append(sum(i)/len(i))
-    return ret
+import json
 
-def calcM(x, y):
-    s = 0
-    for i in range(1, len(x)):
-        s += ((y[i]-y[i-1])/(x[i]-x[i-1]))
-    return s/(len(x)-1)
+def main():
+    # Read Data
+    data = None
+    procData = {
+        'single-slit': [],
+        'double-slit': []
+    }
 
-def calcB(m, x0, y0):
-    return m*(0-x0)+y0
+    with open('./data/data-info.json', 'r', encoding='utf8') as f:
+        data = json.loads(f.read())
 
-# Data for plotting (mm)
-r = 6467.5
-d = [0.25, 0.5, 0.75, 1]
-deltaYs = [
-    (1.69, 1.576, 1.63),
-    (0.876, 0.835, 0.83),
-    (0.555, 0.53, 0.553),
-    (0.41, 0.42)
-]
+    for slit_type in data:
+        for data_info in data[slit_type]:
+            procData[slit_type].append({})
+            with open(f"./data/{data_info['fileName']}", 'r', encoding='utf8') as f:
+                for i in f.readlines():
+                    v, t = map(float, i.strip().split())
+                    procData[slit_type][-1][t] = v
 
-deltaY = procDeltaY(deltaYs)
+    with open('./data/procData.json', 'w', encoding='utf8') as f:
+        json.dump(procData, f)
 
-
-npD = np.array(d)
-npDeltaY = np.array(deltaY)
-
-
-#Calculate data
-
-m = calcM(npD, 1/npDeltaY)
-
-print(f'm = {m}')
-print(f'b = {calcB(m, npD[0], (1/npDeltaY)[0])}')
-
-#Plot
-
-fig, ax = plt.subplots()
-ax.plot(1/npD, npDeltaY)
-
-ax.set(xlabel='1/d (mm)', ylabel='delta Y (mm)',
-       title='association bewteen 1/d and DeltaY')
-ax.grid()
-
-fig.savefig("test.png")
-plt.show()
+if __name__ == '__main__':
+    main()
