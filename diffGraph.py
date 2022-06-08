@@ -42,7 +42,7 @@ def calc_slope(dt: dict, all_time: list, i: int, check_range: int) -> float:
             m.append((dt[all_time[i+j]]-dt[all_time[i-j]])/(float(all_time[i+j])-float(all_time[i-j])))
         else:
             break
-    return tolerant(sum(m)/len(m))
+    return (sum(m)/len(m))
 
 
 def check_local_max(dt: dict, all_time: list, i: int, check_range: int) -> bool:    # check_range -> s
