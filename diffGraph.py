@@ -4,6 +4,7 @@ from matplotlib import mlab
 import numpy as np
 from openData import get_procData
 from genGraph import gen_graph, gen_scatter
+import json
 
 def slice_dict(dt: dict, keys: list, l: int, r: int) -> list:
     ret = []
@@ -29,9 +30,14 @@ def compare(type: str, l, r, m):
     return False
 
 def tolerant(n: float) -> float:
-    if abs(n) < 0.0001:
+    if abs(n) < 0.1:
         return 0
     return n
+
+def calc_average(arg: list) -> float:
+    if len(arg) == 0:
+        return 0
+    return sum(arg) / len(arg)
 
 def calc_slope(dt: dict, all_time: list, i: int, check_range: int) -> float:
     if (i-1 < 0 or i+1 >= len(all_time)):
@@ -42,6 +48,12 @@ def calc_slope(dt: dict, all_time: list, i: int, check_range: int) -> float:
             m.append((dt[all_time[i+j]]-dt[all_time[i-j]])/(float(all_time[i+j])-float(all_time[i-j])))
         else:
             break
+    # l, r = 0, len(m)
+    # mid = (l + r) // 2
+    # while (tolerant(abs(calc_average(m[l:mid]) - calc_average(m[l:r]))) != 0) and (l < r):
+    #     r = mid
+    #     mid = (l + r) // 2
+    # m = m[l:r]
     return (sum(m)/len(m))
 
 
@@ -78,9 +90,11 @@ def main():
         'single-slit': [5, 5],
         'double-slit': [150, 150, 150, 150, 150, 250, 300, 250, 350]
     }
+    analysis_data = {}
 
     for slit_type in data:
         id = 1
+        analysis_data[slit_type] = []
         for dt in data[slit_type]:
             # x, y = map(np.array , seperate_data(dt))
             all_time_float = list(map(float, dt.keys()))
@@ -91,6 +105,8 @@ def main():
                 if(check_local_max(dt, all_time, i, check_range[slit_type][id-1])):
                     y.append(dt[all_time[i]])
                     x.append(all_time[i])
+            x = list(map(float, x))
+            analysis_data[slit_type].append([x, y])
             # local_max = argrelextrema(y, np.greater, order=10)[0]
             # axis_x, axis_y = [], []
             # for i in local_max:
@@ -98,6 +114,9 @@ def main():
             #     axis_y.append(y[i])
             gen_scatter(f"./graph/diff_{slit_type}_{id}.png", x, y)
             id += 1
+    
+    with open('./data/analysis_data.json', 'w', encoding='utf8') as f:
+        json.dump(analysis_data, f)
 
 if __name__ == '__main__':
     main()
