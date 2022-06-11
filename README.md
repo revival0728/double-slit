@@ -2,6 +2,11 @@
 ---
 
 # Data Graph
+## First Try
+![line](./graph/test_line.png)
+![scatter](./graph/test_scatter.png)
+
+
 ## Singe Slit
 ![s1](./graph/single-slit_1.png)
 ![d-s1](./graph/diff_single-slit_1.png)
