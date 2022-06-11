@@ -2,6 +2,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 
 def procDeltaY(data):
     ret = []
@@ -18,10 +19,19 @@ def calcM(x, y):
 def calcB(m, x0, y0):
     return m*(0-x0)+y0
 
+def calc_uncertain_value(delta_y, d):
+    a = math.sqrt(np.sum((delta_y - delta_y.mean())*(delta_y - delta_y.mean())))/math.sqrt(4)
+    b = 0.1/(2*math.sqrt(3))
+    u = math.sqrt(a*a + b*b)
+    print(f'uncertain value = {u}')
+    return u
+
 def scatter(deltaY, d):
     fig, ax = plt.subplots()
-    ax.scatter(1/d, deltaY)
 
+    u = calc_uncertain_value(deltaY, d)
+
+    ax.errorbar(1/d, deltaY, yerr=np.array([u for i in range(4)]), fmt='o')
     ax.set(xlabel='$\\frac{1}{d}$ (mm)', ylabel='Δy (mm)',
         title='The Association bewteen $\\frac{1}{d}$ and Δy')
 
@@ -37,6 +47,7 @@ def line(delta_y, d):
     m = np.sum((frac_d - frac_d.mean())*(delta_y - delta_y.mean()))/np.sum((frac_d - frac_d.mean())*(frac_d - frac_d.mean()))
     b = delta_y.mean() - m * frac_d.mean()
     x, y = np.arange(0, 6), m*np.arange(0, 6)+b
+    print(f'm = {m}')
     print(f'b = {b}')
 
     ax.plot(x, y)
