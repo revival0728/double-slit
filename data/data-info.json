@@ -3,64 +3,64 @@
 		{
 			"fileName": "double-slit-data-1",
 			"average": 10,
-			"d": "150cm",
-			"r": "0.15mm",
+			"r": "150cm",
+			"d": "0.15mm",
 			"status": false
 		},
 		{
 			"fileName": "double-slit-data-2",
 			"average": 50,
-			"d": "150cm",
-			"r": "0.15mm",
+			"r": "150cm",
+			"d": "0.15mm",
 			"status": false
 		},
 		{
 			"fileName": "double-slit-data-3",
 			"average": 10,
-			"d": "150cm",
-			"r": "0.15mm",
+			"r": "150cm",
+			"d": "0.15mm",
 			"status": false
 		},
 		{
 			"fileName": "double-slit-data-4",
 			"average": 10,
-			"d": "150cm",
-			"r": "0.15mm",
+			"r": "150cm",
+			"d": "0.15mm",
 			"status": true
 		},
 		{
 			"fileName": "double-slit-data-5",
 			"average": 50,
-			"d": "150cm",
-			"r": "0.15mm",
+			"r": "150cm",
+			"d": "0.15mm",
 			"status": true
 		},
 		{
 			"fileName": "double-slit-data-c-1",
 			"average": 50,
-			"d": "4.25m",
-			"r": "0.25mm",
+			"r": "4.25m",
+			"d": "0.25mm",
 			"status": true
 		},
 		{
 			"fileName": "double-slit-data-c-2",
 			"average": 50,
-			"d": "4.25m",
-			"r": "0.5mm",
+			"r": "4.25m",
+			"d": "0.5mm",
 			"status": true
 		},
 		{
 			"fileName": "double-slit-data-c-3",
 			"average": 50,
-			"d": "4.25m",
-			"r": "0.75mm",
+			"r": "4.25m",
+			"d": "0.75mm",
 			"status": true
 		},
 		{
 			"fileName": "double-slit-data-c-4",
 			"average": 50,
-			"d": "4.25m",
-			"r": "1mm",
+			"r": "4.25m",
+			"d": "1mm",
 			"status": true
 		}
 	],
@@ -68,15 +68,15 @@
 		{
 			"fileName": "single-slit-data-1",
 			"average": 10,
-			"d": "150cm",
-			"r": "0.15mm",
+			"r": "150cm",
+			"d": "0.15mm",
 			"status": true
 		},
 		{
 			"fileName": "single-slit-data-2",
 			"average": 50,
-			"d": "150cm",
-			"r": "0.15mm",
+			"r": "150cm",
+			"d": "0.15mm",
 			"status": true
 		}
 	]

@@ -36,3 +36,8 @@
 ### Data 9
 ![d9](./graph/double-slit_9.png)
 ![d-d9](./graph/diff_double-slit_9.png)
+
+## Result
+### Scatter
+![result_scatter](./graph/final_result_scatter.png)
+![result_line](./graph/final_result_line.png)
