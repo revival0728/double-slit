@@ -2,6 +2,7 @@
 
 import json
 import numpy as np
+import math
 from matplotlib import pyplot as plt
 
 MACHINE_SPEED = 0.0562855   # mm/s
@@ -48,14 +49,19 @@ def data8(x, y) -> float:
 def data9(x, y) -> float:
     return data(x, y, 9, (1, 30), (35, 100), (100, 120))
 
-def graph_scatter(_delta_y, _d):
+def get_available_data(_delta_y: dict, _d: dict) -> tuple:
     delta_y, d = [], []
     for i in range(5, 9):
         delta_y.append(_delta_y['double-slit'][i])
         d.append(_d['double-slit'][i])
     delta_y, d = np.array(delta_y), np.array(d)
+    return delta_y, d
+
+def graph_scatter(_delta_y, _d):
+    uncertain_value = calc_uncertain_value(_delta_y, _d)
+    delta_y, d = get_available_data(_delta_y, _d)
     fig, ax = plt.subplots()
-    ax.scatter(1/d, delta_y)
+    ax.errorbar(1/d, delta_y, yerr=np.array([uncertain_value for i in range(4)]), fmt='o')
     plt.ylim((0, 5))
     plt.xlim((0, 5))
     plt.xlabel('$\\frac{1}{d}$ (mm)')
@@ -64,11 +70,7 @@ def graph_scatter(_delta_y, _d):
     plt.savefig('./graph/final_result_scatter.png')
 
 def graph_line(_delta_y, _d):
-    delta_y, d = [], []
-    for i in range(5, 9):
-        delta_y.append(_delta_y['double-slit'][i])
-        d.append(_d['double-slit'][i])
-    delta_y, d = np.array(delta_y), np.array(d)
+    delta_y, d = get_available_data(_delta_y, _d)
     frac_d = 1/d
     m = np.sum((frac_d - frac_d.mean())*(delta_y - delta_y.mean()))/np.sum((frac_d - frac_d.mean())*(frac_d - frac_d.mean()))
     b = delta_y.mean() - m * frac_d.mean()
@@ -83,6 +85,15 @@ def graph_line(_delta_y, _d):
     plt.ylabel('Δy (mm)')
     plt.savefig('./graph/final_result_line.png')
     print()
+
+def calc_uncertain_value(_delta_y, _d):
+    delta_y, d = get_available_data(_delta_y, _d)
+    a = math.sqrt(np.sum((delta_y - delta_y.mean())*(delta_y - delta_y.mean())))/math.sqrt(4)
+    b = 1/(2*math.sqrt(3))
+    u = math.sqrt(a*a + b*b)
+    print(f'uncertain value = {u}')
+    print()
+    return u
 
 
 def main():
