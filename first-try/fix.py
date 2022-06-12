@@ -32,7 +32,7 @@ def scatter(deltaY, d):
     u = calc_uncertain_value(deltaY, d)
 
     ax.errorbar(1/d, deltaY, yerr=np.array([u for i in range(4)]), fmt='o')
-    ax.set(xlabel='$\\frac{1}{d}$ (mm)', ylabel='Δy (mm)',
+    ax.set(xlabel='$\\frac{1}{d}$ (${mm}^{-1}$)', ylabel='Δy (cm)',
         title='The Association bewteen $\\frac{1}{d}$ and Δy')
 
     plt.xlim((0, 5))
