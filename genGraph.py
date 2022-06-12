@@ -15,6 +15,8 @@ def gen_graph(fn: str, x: list, y: list) -> None:
     fig, ax = plt.subplots()
     ax.plot(x, y)
     plt.xlim(0, max(x)+1)
+    plt.xlabel('time (s)')
+    plt.ylabel('light intensity (V)')
     plt.savefig(fn)
 
 def gen_scatter(fn: str, x: list, y: list) -> None:
@@ -25,6 +27,8 @@ def gen_scatter(fn: str, x: list, y: list) -> None:
     x = list(map(float, x))
     fig, ax = plt.subplots()
     ax.scatter(x, y)
+    plt.xlabel('time (s)')
+    plt.ylabel('light intensity (V)')
     plt.savefig(fn)
 
 def main():
