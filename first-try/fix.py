@@ -51,7 +51,7 @@ def line(delta_y, d):
     print(f'b = {b}')
 
     ax.plot(x, y)
-    ax.set(xlabel='$\\frac{1}{d}$ (mm)', ylabel='Δy (mm)',
+    ax.set(xlabel='$\\frac{1}{d}$ (${mm}^{-1}$)', ylabel='Δy (cm)',
         title='The Association bewteen $\\frac{1}{d}$ and Δy')
 
     plt.xlim((0, 5))
